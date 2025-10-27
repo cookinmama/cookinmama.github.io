@@ -1,1 +1,69 @@
-<p>hola tuki</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Gimnasio 💪</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; padding: 0 20px; }
+    h1 { text-align: center; color: #2c3e50; }
+    form { margin-bottom: 20px; }
+    input, button { padding: 10px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+    th { background-color: #2c3e50; color: white; }
+  </style>
+</head>
+<body>
+
+  <h1>Control de Gimnasio 💪</h1>
+
+  <form id="exerciseForm">
+    <input type="date" id="fecha" required>
+    <input type="text" id="ejercicio" placeholder="Ejercicio" required>
+    <input type="number" id="peso" placeholder="Peso (kg)" required>
+    <input type="number" id="reps" placeholder="Repeticiones" required>
+    <button type="submit">Añadir Registro</button>
+  </form>
+
+  <table id="tablaEjercicios">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Ejercicio</th>
+        <th>Peso (kg)</th>
+        <th>Reps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí aparecerán los registros -->
+    </tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById('exerciseForm');
+    const tbody = document.getElementById('tablaEjercicios').querySelector('tbody');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const fecha = document.getElementById('fecha').value;
+      const ejercicio = document.getElementById('ejercicio').value;
+      const peso = document.getElementById('peso').value;
+      const reps = document.getElementById('reps').value;
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${fecha}</td>
+        <td>${ejercicio}</td>
+        <td>${peso}</td>
+        <td>${reps}</td>
+      `;
+      tbody.appendChild(row);
+
+      // Limpiar formulario
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
